@@ -21,6 +21,7 @@
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
+    "api-start": "node api/src/index.js",
     "api-test": "jest api"
   },
   "eslintConfig": {
