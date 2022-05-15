@@ -3,12 +3,20 @@ const bodyParser = require('body-parser')
 
 const app = express()
 
+const cors = require("./cors");
 let countries = require('./data')
 
 app.use(bodyParser.json())
 
+app.use(cors);
+
 app.get('/countries', (req, res) => {
   res.json(countries)
+})
+
+app.get('/countries/:code', (req, res) => {
+  const { code } = req.params
+  res.json(countries.find(country => country.code === code))
 })
 
 app.post('/countries', (req, res) => {

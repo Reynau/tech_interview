@@ -16,6 +16,19 @@ describe('GET /countries', () => {
   })
 })
 
+describe('GET /countries/:code', () => {
+  it('should return the country with the specified code', async () => {
+    const country = countries[0]
+    const response = await request(server)
+      .get(`/countries/${country.code}`)
+      .set('Accept', 'application/json')
+
+    expect(response.headers["content-type"]).toMatch(/json/)
+    expect(response.status).toEqual(200)
+    expect(response.body).toEqual(country)
+  })
+})
+
 describe('POST /countries', () => {
   it('should success and return the added country', async () => {
     const newCountry = {
@@ -25,7 +38,7 @@ describe('POST /countries', () => {
 
     let numOfCountries = countries.length
 
-    response = await request(server)
+    let response = await request(server)
       .post('/countries')
       .send(newCountry)
       .set('Accept', 'application/json')
