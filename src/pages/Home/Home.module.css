@@ -1,0 +1,4 @@
+
+.createBtn {
+    @apply cursor-pointer rounded border px-5 py-2 inline-block hover:shadow
+}
