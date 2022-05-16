@@ -1,6 +1,8 @@
 import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
+import Input from "../../components/form/Input";
+import SubmitBtn from "../../components/form/SubmitBtn";
 
 export default function Create() {
   const navigate = useNavigate()
@@ -22,15 +24,9 @@ export default function Create() {
   return (
     <div className='min-h-screen flex justify-center items-center'>
       <form className='text-left p-5 border shadow flex flex-col space-y-2' onSubmit={handleSubmit}>
-        <div>
-          <p>Name:</p>
-          <input className='border p-2' type="text" value={name} onChange={event => setName(event.target.value)}/>
-        </div>
-        <div>
-          <p>Code:</p>
-          <input className='border p-2' type="text" value={code} onChange={event => setCode(event.target.value)}/>
-        </div>
-        <input className='px-5 py-2 border cursor-pointer hover:shadow' type="submit" value="Create"/>
+        <Input label='Name:' value={name} onChangeHandler={event => setName(event.target.value)}/>
+        <Input label='Code:' value={code} onChangeHandler={event => setCode(event.target.value)}/>
+        <SubmitBtn value='Submit'/>
         <Link className='text-sky-400 underline text-center' to='/'>Go back</Link>
       </form>
     </div>
